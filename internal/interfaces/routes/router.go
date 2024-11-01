@@ -28,7 +28,7 @@ func (r *router) InitRoutes(rg *gin.RouterGroup) {
 	rg.GET("/auth/:provider", r.internalAuth.SessionMiddleware, r.oauth.AuthHandler)
 	rg.GET("/auth/:provider/callback", r.internalAuth.SessionMiddleware, r.oauth.CallbackHandler)
 
-	authorized := rg.Group("/", r.internalAuth.AuthMiddleware)
+	authorized := rg.Group("/:provider", r.internalAuth.AuthMiddleware)
 	{
 		authorized.GET("/playlist", r.playlistController.GetPlaylistHandler)
 	}

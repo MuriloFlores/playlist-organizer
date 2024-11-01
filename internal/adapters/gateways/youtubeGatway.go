@@ -34,6 +34,7 @@ func NewYoutubeAPIGateway(clientID, clientSecret, redirectURL string) (Interface
 			"openid",
 			"https://www.googleapis.com/auth/youtube",
 			"https://www.googleapis.com/auth/userinfo.profile",
+			"https://www.googleapis.com/auth/youtube.force-ssl",
 		},
 		Endpoint: google.Endpoint,
 	}

@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/sessions"
 	"github.com/markbates/goth"
+	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/google"
 	"log"
 	"youtubeapi/configs"
@@ -26,6 +27,7 @@ func main() {
 	router := gin.Default()
 
 	sessionStore := sessions.NewCookieStore([]byte(configs.EnvConfigs.SessionSecret))
+	gothic.Store = sessionStore
 
 	youtubeGateway, err := gateways.NewYoutubeAPIGateway(
 		configs.EnvConfigs.ClientID,
